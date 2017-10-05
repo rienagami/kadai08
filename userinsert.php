@@ -7,7 +7,7 @@
 
 if(
 !isset($_POST["name"]) || $_POST["name"]=="" ||
-!isset($_POST["email"]) || $_POST["email"]=="" ||
+//!isset($_POST["email"]) || $_POST["email"]=="" ||
 !isset($_POST["lid"]) || $_POST["lid"]=="" ||
 !isset($_POST["lpw"]) || $_POST["lpw"]==""
 ){
@@ -16,7 +16,7 @@ if(
 
 //１ POSTデータ取得
 $name  = $_POST["name"];
-$email = $_POST["email"];
+//$email = $_POST["email"];
 $lid   = $_POST["lid"];
 $lpw   = $_POST["lpw"];
 
@@ -29,10 +29,10 @@ try{
 }
 
 //データ登録SQL作成 
-$stmt = $pdo->prepare("INSERT INTO gs_an_table(id, name, email, lid, lpw, indate )VALUES(NULL, :name, :email, :lid, :lpw, sysdate())");
+$stmt = $pdo->prepare("INSERT INTO gs_user_table(id, name, lid, lpw, indate )VALUES(NULL, :name, :lid, :lpw, sysdate())");
 
 $stmt->bindValue(':name', $name);
-$stmt->bindValue(':email', $email);
+//$stmt->bindValue(':email', $email);
 $stmt->bindValue(':lid', $lid);
 $stmt->bindValue(':lpw', $lpw);
 $status = $stmt->execute();
@@ -44,7 +44,8 @@ if($status==false){
     //SQL実行時にエラーがある場合（エラーオブジェクトを取得して表示）
     $error = $stmt->errorInfo();
     exit("QueryError:".$error[2]);
-    exit;
+    }else{
+    header("Location: userindex.php");
 }
 ?>
 
