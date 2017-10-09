@@ -20,9 +20,9 @@ $stmt = $pdo->prepare("UPDATE gs_user_table SET name=:name,lid=:lid,lpw=:lpw WHE
 
 $stmt->bindValue(':name',$name);
 $stmt->bindValue(':lid',$lid);
-$stmt->bindVakue(':lpw',$lpw);
+$stmt->bindValue(':lpw',$lpw);
 $stmt->bindValue(':id', $id);
-$status = &stmt->execute();
+$status = $stmt->execute();
 
 
 if($status==false){
@@ -30,7 +30,8 @@ if($status==false){
     exit("QueryError:".$error[2]);
     
 }else{
-    header("Locaton: userselect.php");
+    header("Location: userselect.php");
+    exit;
   
 }
 ?>

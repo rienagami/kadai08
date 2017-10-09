@@ -18,7 +18,7 @@ $status = $stmt->execute();
 //データ表示
 $view="";
 if($status==false){
-    $error = $stmt=>erroInfo();
+    $error = $stmt->errorInfo();
     exit("ErrorQuery:".$error[2]);
 }else{
     $row = $stmt->fetch();
@@ -56,7 +56,7 @@ if($status==false){
         </header>
 
         <!--        メインここから-->
-        <form action="post" action="userupdate.php">
+        <form method="post" action="userupdate.php">
             <div class="jumbotron">
                 <fieldset>
                     <legend>ユーザー登録</legend>

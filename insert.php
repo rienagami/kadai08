@@ -24,6 +24,8 @@ try {
 //３．データ登録SQL作成 a1 a2 a3消した
 $stmt = $pdo->prepare("INSERT INTO gs_an_table(id, name, email, naiyou,
 indate )VALUES(NULL, :name, :email, :naiyou, sysdate())");
+
+
 $stmt->bindValue(':name', $name);
 $stmt->bindValue(':email', $email);
 $stmt->bindValue(':naiyou', $naiyou);

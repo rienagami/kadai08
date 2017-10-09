@@ -25,7 +25,7 @@ if($status==false){
     $view .='<a href="userdetail.php?
     id='.$result["id"].'">';
     $view .= $result["name"]."
-    [".result["indate"]."]<br>";
+    [".$result["indate"]."]<br>";
     $view .= '</a>　';
         
     
